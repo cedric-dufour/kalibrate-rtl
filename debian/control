@@ -1,0 +1,17 @@
+Source: kalibrate-rtl
+Section: misc
+Priority: optional
+Maintainer: Cedric Dufour <cedric.dufour@ced-network.net>
+Build-Depends: autoconf, automake, build-essential, cdbs, debhelper (>= 5), help2man, libtool, pkg-config, libfftw3-dev, librtlsdr-dev, libusb-1.0-0-dev
+Standards-Version: 3.8.4
+Homepage: https://github.com/steve-m/kalibrate-rtl
+
+Package: rtlsdr-kal
+Section: utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Calibration utility for RTL-SDR devices
+ Steve Markgraf's RTL-SDR calibration utility - based on Joshua Lackey's
+ original 'kalibrate' utility - scans for GSM base stations in a given
+ frequency band and use those base stations to calculate the local
+ oscillator frequency offset.

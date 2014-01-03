@@ -1,0 +1,6 @@
+kalibrate-rtl (0.4.1~git20131215) UNRELEASED; urgency=low
+
+  * INITIAL DEBIAN PACKAGING
+
+ -- Cedric Dufour <cedric.dufour@ced-network.net>  Fri, 03 Jan 2014 09:57:38 +0100
+

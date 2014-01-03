@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+VERSION = "git"
+
+build/rtlsdr-kal:: | build.tmp
+	# Build
+	cd build.tmp; \
+	make
+
+build.tmp:
+	# Create temporary build.tmpectory
+	mkdir build.tmp; \
+	cp -rp * build.tmp; \
+	cd build.tmp; \
+	./bootstrap; \
+	./configure
+
+install/rtlsdr-kal::
+	# Copy binary
+	mkdir -p debian/tmp/usr/bin
+	cp build.tmp/src/kal debian/tmp/usr/bin/rtl_kal
+	# Create man pages
+	mkdir -p debian/tmp/usr/share/man/man1
+	help2man --name 'a calibration utility for RTL-SDR devices' \
+		--help-option --help --version-string $(VERSION) --no-info \
+		debian/tmp/usr/bin/rtl_kal > debian/tmp/usr/share/man/man1/rtl_kal.1
+
+clean::
+	rm -rf build.tmp
+	dh_auto_clean
+
